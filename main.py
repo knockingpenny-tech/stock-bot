@@ -57,9 +57,14 @@ for name, code in stocks.items():
         print(f"{name} 분석 중 에러 발생: {e}")
 
 # 4. 결과 전송 (신호가 하나라도 있을 때만)
-if final_message:
-    payload = {"content": f"📢 **오늘의 주식 알림**\n{final_message}"}
-    requests.post(discord_url, json=payload)
-    print("디스코드 알림 전송 완료")
+#if final_message:
+#    payload = {"content": f"📢 **오늘의 주식 알림**\n{final_message}"}
+#    requests.post(discord_url, json=payload)
+#    print("디스코드 알림 전송 완료")
+# if final_message:  <-- 이 줄 앞에 #을 붙여서 무시하게 만듦
+if True:            # <-- 무조건(True) 실행해라!
+    test_msg = "🚨 주인님! 연결 테스트 성공했습니다! (RSI 감시 중)"
+    requests.post(discord_url, json={"content": test_msg})
+    print("강제 알림 전송 완료")
 else:
     print("오늘은 보낼 알림이 없습니다.")
